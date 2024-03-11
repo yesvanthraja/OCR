@@ -7,17 +7,19 @@ This project focuses on developing a robust `Optical Character Recognition (OCR)
 # 1. File Upload:
 Users can upload files through the Streamlit web interface. Supported file types include PNG, JPG, JPEG, and PDF.
 
-# 2. Text Detection (PDF Only):
+# 2. Text Detection:
 For PDF files, the craft_mlt_25k.pth model is employed for text detection. This model excels at identifying text regions within the document. The text detection phase involves:
 
 Page Segmentation: Each page of the PDF is segmented into distinct regions containing text.
 Bounding Boxes: The model outputs bounding boxes that enclose the detected text regions.
+
 # 3. Text Recognition:
 For both images and PDFs, the english_g2.pth model is utilized for text recognition. This model excels at recognizing English text within the detected regions. The text recognition phase involves:
 
 Character Recognition: The model identifies individual characters within each bounding box.
 Word Formation: Recognized characters are combined to form words.
 Language Understanding: English text is accurately recognized and converted into machine-readable text.
+
 # 4. Efficiency:
 Pre-Trained Models: EasyOCR's pre-trained models, craft_mlt_25k.pth and english_g2.pth, eliminate the need for extensive training on custom datasets.
 Streamlit Interface: The tool leverages Streamlit to provide an intuitive and user-friendly web interface for uploading files and viewing results.
@@ -39,18 +41,17 @@ Usability: Collect user feedback on the ease of use and overall experience with 
 Accuracy Validation: Encourage users to validate the accuracy of the extracted text against ground truth data.
 
 
-Usage
-Installation:
+# Installation:
 
 Install the required dependencies by running `pip install -r requirements.txt`.
 Run the Application:
 
 Execute the application by running `streamlit run streamlit_app.py`.
+
 Upload Files:
-
 Use the web interface to upload files for OCR processing.
-View Results:
 
+View Results:
 Explore the extracted text results displayed on the web interface.
 Contribution Guidelines
 Contributions to this project are encouraged. To contribute:
@@ -60,5 +61,6 @@ Create a new branch (git checkout -b feature/improvement).
 Make changes and commit (git commit -m 'Add feature/improvement').
 Push the branch (git push origin feature/improvement).
 Open a pull request.
+
 Acknowledgments
 This project utilizes the EasyOCR library and Streamlit for creating a robust and user-friendly OCR tool.
