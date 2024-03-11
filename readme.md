@@ -44,23 +44,11 @@ Accuracy Validation: Encourage users to validate the accuracy of the extracted t
 # Installation:
 
 Install the required dependencies by running `pip install -r requirements.txt`.
-Run the Application:
+
+# Run the Application:
 
 Execute the application by running `streamlit run streamlit_app.py`.
 
-Upload Files:
+# Upload Files:
 Use the web interface to upload files for OCR processing.
 
-View Results:
-Explore the extracted text results displayed on the web interface.
-Contribution Guidelines
-Contributions to this project are encouraged. To contribute:
-
-Fork the repository.
-Create a new branch (git checkout -b feature/improvement).
-Make changes and commit (git commit -m 'Add feature/improvement').
-Push the branch (git push origin feature/improvement).
-Open a pull request.
-
-Acknowledgments
-This project utilizes the EasyOCR library and Streamlit for creating a robust and user-friendly OCR tool.
