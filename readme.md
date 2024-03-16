@@ -1,24 +1,32 @@
 # Optical Character Recognition(OCR)
 
+# Demo video
+
+https://github.com/yesvanthraja/OCR/assets/68420593/ca40703e-0006-49fd-b7f3-25143ea27232
+
+
+
+
 # Project Overview
 This project focuses on developing a robust `Optical Character Recognition (OCR)` tool using the `EasyOCR` library. The tool is designed to accurately `extract text` from various file formats, including `images (PNG, JPG, JPEG) and PDF documents`. Leveraging the power of EasyOCR, the implementation utilizes the craft_mlt_25k.pth model for text detection and the english_g2.pth model for English text recognition.
 
 ## Working !!!
+
 ## File Upload:
 Users can upload files through the Streamlit web interface. Supported file types include PNG, JPG, JPEG, and PDF.
 
 ## Text Detection:
 For PDF files, the craft_mlt_25k.pth model is employed for text detection. This model excels at identifying text regions within the document. The text detection phase involves:
 
-  Page Segmentation: Each page of the PDF is segmented into distinct regions containing text.
-  Bounding Boxes: The model outputs bounding boxes that enclose the detected text regions.
+  - Page Segmentation: Each page of the PDF is segmented into distinct regions containing text.
+  - Bounding Boxes: The model outputs bounding boxes that enclose the detected text regions.
 
 ## Text Recognition:
 For both images and PDFs, the english_g2.pth model is utilized for text recognition. This model excels at recognizing English text within the detected regions. The text recognition phase involves:
 
-  Character Recognition: The model identifies individual characters within each bounding box.
-  Word Formation: Recognized characters are combined to form words.
-  Language Understanding: English text is accurately recognized and converted into machine-readable text.
+  - Character Recognition: The model identifies individual characters within each bounding box.
+  - Word Formation: Recognized characters are combined to form words.
+  - Language Understanding: English text is accurately recognized and converted into machine-readable text.
 
 ## Evaluation Metrics
 
