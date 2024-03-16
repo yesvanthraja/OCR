@@ -2,9 +2,13 @@
 
 # Demo video
 
-https://github.com/yesvanthraja/OCR/assets/68420593/ca40703e-0006-49fd-b7f3-25143ea27232
+# Image text extraction
 
+https://github.com/yesvanthraja/OCR/assets/68420593/6a9d6126-8bf5-4cd2-acfb-37e8626f4acd
 
+# PDF text extraction
+
+https://github.com/yesvanthraja/OCR/assets/68420593/7b45e8cf-c23e-46ac-b7ee-b9ee9d76ddc5
 
 
 # Project Overview
