@@ -56,7 +56,7 @@ By analyzing the WER, we can assess the accuracy and performance of our OCR tool
 
 # Clone the repository
 
-`git clone https://github.com/yesvanthraja/OCR`
+`git clone https://github.com/yesvanthraja/OCR.git`
 
 # Installation:
 
