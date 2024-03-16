@@ -1,12 +1,14 @@
-from PIL import Image
+import Levenshtein
 import streamlit as st
 import easyocr as ocr
+from PIL import Image
 import fitz
 import numpy as np
 import tempfile
 import os
 from langdetect import detect
 from googletrans import Translator
+from docx import Document
 
 def process_pdf(file_upload):
     temp_filename = None
@@ -52,13 +54,22 @@ def translate_text(text, target_lang='en'):
     translation = translator.translate(text, dest=target_lang)
     return translation.text
 
+# Calcuate the word error rate
+def calculate_wer(ground_truth, recognized):
+    ground_truth = ground_truth.strip().lower()
+    recognized = recognized.strip().lower()
+    distance = Levenshtein.distance(ground_truth, recognized)
+    wer = distance / max(len(ground_truth.split()), len(recognized.split()))
+    return wer
+
 def main():
     st.title("Optical Character Recognition - OCR")
     st.markdown("`Extract text by uploading file`")
 
-    file_upload = st.file_uploader(label="Upload your files here", type=['png', 'jpg', 'jpeg', 'pdf'])
+    file_upload = st.file_uploader(label="Upload your image/PDF here", type=['png', 'jpg', 'jpeg', 'pdf'])
 
     model = ocr.Reader(['en'], model_storage_directory='.')
+    word_file_upload = st.file_uploader(label="Upload your Word document for calculating the Word Error Rate", type=['docx'])
 
     if file_upload:
         with st.spinner(f"Processing {file_upload.name} ..."):
@@ -68,6 +79,7 @@ def main():
                 extracted_text = process_image(file_upload, model)
 
             if extracted_text is not None:
+                st.write("Extracted Text:")
                 st.write(extracted_text)
                 language = detect(extracted_text[0]) if extracted_text else 'en'
                 st.write(f"Detected Language: {language}")
@@ -76,6 +88,15 @@ def main():
                     if translate_button:
                         translated_text = translate_text(extracted_text[0], target_lang='en')
                         st.write(f"Translated Text: {translated_text}")
+                
+                # Calculate WER using the ground truth text from the uploaded Word document
+                if word_file_upload:
+                    with st.spinner("Calculating Word Error Rate ..."):
+                        ground_truth_doc = Document(word_file_upload)
+                        ground_truth_text = ground_truth_doc.paragraphs[0].text  
+                        recognized_text = extracted_text[0] 
+                        wer = calculate_wer(ground_truth_text, recognized_text)
+                        st.write(f"WORD ERROR RATE(WER): {wer}")
 
     else:
         st.write("")
